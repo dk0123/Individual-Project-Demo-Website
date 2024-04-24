@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Individual Project</title>
+
+
+     <!-- Add OpenCV -->
+     <script async src="../Resources/opencv.js" onload="openCvReady()"></script>
+
+
+    <!-- Link to css file -->
+    <link rel="stylesheet" href="style.css">
+     <!-- Linking Google Fonts to import Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+
+</head>
+<body>
+    <!-- Main Page (This will include mostly everything) --> 
+    <div class="main-page">
+        <!-- -------------Side Line ------------- -->
+        <div class="side-line"></div>
+
+         <!-- -------------Side Bar ------------- -->
+        <div class="side-bar">
+
+            <!-- Info Button -->
+
+            <span class="circle" id="infoBtn"> <i class="material-icons" style="font-size:36px; color:white">info</i> </span>
+
+
+
+<!-- Modal -->
+<div id="infoModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Project Information Sheet</h2>
+        <p><strong>Project Title:</strong> Detecting human features from face to support personalisation.</p>
+        <p>You are being invited to take part in a student project...</p>
+        <p>...Thank you very much for taking the time to read this information sheet.</p>
+    </div>
+</div>
+
+            
+            
+            <span class="circle blue-circle"> <i class="material-icons" style= "font-size:36px; color:white ">videocam</i> </span> 
+            <span class="circle capture-icon">
+                <i class="material-icons" style="font-size: 36px; color: white;">camera_alt</i>
+            </span>
+        </div>
+
+         <!-- -------------Right Panel ------------- -->
+        <div class="right-panel">
+
+             <!-- -------------Header ------------- -->
+            <div class="header">
+                <div class="empty"></div>
+                <h1>Individual Project</h1>
+                <div class="logo-container"><img src="../Resources/uol Logo.webp" alt="" width="150px"></div>
+            </div>
+
+             <!-- -------------Tablet Container------------- -->
+            <div class="tablet-container">
+            <img id="tablet-image" src="Resources/tablet.png" width="1024" height="720" alt="tablet image">
+
+            <canvas id="main-canvas" width="960" height="720">
+                <img id="img-main" src="../Resources/car.png" alt="">
+            </canvas>
+            </div>
+        </div>
+    </div> 
+    <!-- Link the javascript file  -->
+    <script src="main.js"></script>
+</body>
+</html>
