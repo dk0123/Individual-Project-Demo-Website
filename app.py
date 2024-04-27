@@ -1,12 +1,10 @@
 from flask import Flask, request, jsonify, send_from_directory
 from werkzeug.utils import secure_filename
 import os
+from recommendations import main as get_movie_recommendations
 
 app = Flask(__name__, static_url_path='', static_folder='ModuleA')
 app.config['UPLOAD_FOLDER'] = 'uploads'
-
-# Ensure the uploads directory exists
-os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
 @app.route('/')
 def serve_index():
@@ -20,8 +18,9 @@ def upload_image():
     image = request.files['image']
     filename = secure_filename(image.filename)
     image.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-
-    return jsonify({'message': 'Image uploaded successfully', 'filename': filename}), 200
+    # Trigger recommendation after image is saved and processed
+    recommendations = get_movie_recommendations()
+    return jsonify({'message': 'Image uploaded successfully', 'filename': filename, 'recommendations': recommendations})
 
 if __name__ == '__main__':
     app.run(debug=True)

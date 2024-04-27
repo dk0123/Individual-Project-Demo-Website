@@ -165,13 +165,27 @@ function flashFeedback() {
 
 function uploadImage(formData) {
     fetch('/upload', {
-      method: 'POST',
-      body: formData
+        method: 'POST',
+        body: formData
     })
     .then(response => response.json())
-    .then(data => console.log('Server response:', data))
+    .then(data => {
+        console.log('Server response:', data);
+        displayRecommendations(data.recommendations);  // New function to handle recommendations
+    })
     .catch(error => console.error('Error uploading image:', error));
 }
+
+function displayRecommendations(recommendations) {
+    const recommendationsDiv = document.getElementById('recommendations');
+    recommendationsDiv.innerHTML = '';  // Clear previous recommendations
+    recommendations.forEach((recommendation, index) => {
+        const p = document.createElement('p');
+        p.textContent = `${index + 1}. ${recommendation}`;
+        recommendationsDiv.appendChild(p);
+    });
+}
+
 
 
     // Event listener for the videocam icon

@@ -2,9 +2,11 @@
 import cv2
 
 # Load the Haar Cascade for face detection
-face_cascade = cv2.CascadeClassifier('ModuleA/Resources/haarcascade_frontalface_default (1).xml')
+
 
 def detect_and_save_face(image_path):
+    face_cascade = cv2.CascadeClassifier('ModuleA/Resources/haarcascade_frontalface_default (1).xml')
+
     # Load the image
     image_path = ('uploads/captured_image.png')
     img = cv2.imread(image_path)
@@ -30,11 +32,6 @@ def detect_and_save_face(image_path):
     return True
 
 if __name__ == "__main__":
-    image_path = 'uploads/input_image.png'  # Adjust this path as needed
+    image_path = 'uploads/captured_image.png'  
     success = detect_and_save_face(image_path)
-    '''
-    if success:
-        print("Face detection and saving completed successfully.")
-    else:
-        print("No face detected or an error occurred.")
-    '''
+
