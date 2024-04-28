@@ -5,7 +5,7 @@ import cv2
 
 
 def detect_and_save_face(image_path):
-    face_cascade = cv2.CascadeClassifier('ModuleA/Resources/haarcascade_frontalface_default (1).xml')
+    face_cascade = cv2.CascadeClassifier('Website/Resources/haarcascade_frontalface_default (1).xml')
     # Load the image
     image_path = ('uploads/captured_image.png')
     img = cv2.imread(image_path)

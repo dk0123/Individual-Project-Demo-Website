@@ -17,13 +17,13 @@ face_roi_image = detect_and_save_face(image_path)
 
 
 # loading machine learning model for emotion recognition
-emotion_model = tf.keras.models.load_model('ModuleA/Resources/emotion_recognition.keras')
+emotion_model = tf.keras.models.load_model('Website/Resources/emotion_recognition.keras')
 
 # loading the ML model for Gender Recognition.
-gender_model = tf.keras.models.load_model('ModuleA/Resources/gender_model.keras')
+gender_model = tf.keras.models.load_model('Website/Resources/gender_model.keras')
 
 # loading the ML model for Age Recognition.
-age_model = tf.keras.models.load_model('ModuleA/Resources/age_model.keras')
+age_model = tf.keras.models.load_model('Website/Resources/age_model.keras')
 
 
 # For Gender REcognition

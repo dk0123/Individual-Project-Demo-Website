@@ -5,12 +5,12 @@ import os
 from recommendations import main as get_movie_recommendations
 from face_detection import detect_and_save_face
 
-app = Flask(__name__, static_url_path='', static_folder='ModuleA')
+app = Flask(__name__, static_url_path='', static_folder='Website')
 app.config['UPLOAD_FOLDER'] = 'uploads'
 
 @app.route('/')
 def serve_index():
-    return send_from_directory('ModuleA', 'index.html')
+    return send_from_directory('Website', 'index.html')
 
 @app.route('/upload', methods=['POST'])
 def upload_image():
