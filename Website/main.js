@@ -1,38 +1,33 @@
 // main.js
 
-let videoStream; // Variable to store the video stream
+let videoStream; // variable to store the video stream
 let video;
 
-
-// Get the modal
+// Getting the modal
 var modal = document.getElementById("infoModal");
 
-// Get the button that opens the modal
+// Getting the button that opens the modal
 var btn = document.getElementById("infoBtn");
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 
-// When the user clicks the button, open the modal 
+// When user clicks the button, open the modal 
 btn.onclick = function() {
     modal.style.display = "block";
 }
 
-// When the user clicks on <span> (x), close the modal
+// When the user clicks on x close the modal
 span.onclick = function() {
     modal.style.display = "none";
 }
 
-
-// When the user clicks anywhere outside of the modal, close it
+// close the model when user clicks anywhere outside it
 window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
     }
 }
-
-
-
 
 // Function to handle the runtime initialization of OpenCV
 function openCvReady() {
@@ -46,22 +41,21 @@ function openCvReady() {
 
 // Function to initialize video streaming
 function initializeVideo() {
-    let video = document.querySelector('video'); // Try to get an existing video element
+    let video = document.querySelector('video'); 
     const canvas = document.getElementById('main-canvas');
     const context = canvas.getContext('2d');
 
-    if (!video) { // If no video element exists, create and configure a new one
+    if (!video) { 
         video = document.createElement('video');
-        document.body.appendChild(video); // Append it somewhere in your document; adjust as needed
+        document.body.appendChild(video); 
         video.width = canvas.width;
         video.height = canvas.height;
-        video.style.display = 'none'; // Hide the video element as it's not directly displayed
+        video.style.display = 'none'; 
     }
 
     // Function to continuously capture frames from the video stream
     function captureVideoFrame() {
         if (!video.paused && !video.ended) {
-             // Set canvas width and height outside of drawImage
              canvas.width = 720;
              canvas.height = 430;
             context.drawImage(video, 0, 0, canvas.width, canvas.height);
@@ -69,9 +63,8 @@ function initializeVideo() {
         }
     }
 
-    // Function to start the video stream
+    //Function to start the video stream
     function startVideo() {
-        // Ensure the canvas is displayed
         const canvas = document.getElementById('main-canvas');
         canvas.style.display = 'block';
     
@@ -88,7 +81,6 @@ function initializeVideo() {
             });
     }
 
-    // Function to stop the video stream
 // Function to stop the video stream and clear the canvas
 function stopVideo() {
     if (videoStream) {
@@ -96,16 +88,13 @@ function stopVideo() {
         tracks.forEach(track => track.stop());
         videoStream = null; // Clear the videoStream variable
     }
-    // Hide the video element or handle as needed
+
     if (video) {
         video.pause();
         video.srcObject = null;
         video.load();
     }
 }
-
-
-
 
     // Convert dataURL to Blob
     function dataURLToBlob(dataURL) {
@@ -118,8 +107,6 @@ function stopVideo() {
     }
     return new Blob([ab], {type: mimeString});
 }
-
-
 
 function captureFrame() {
     if (!videoStream || !video) {
@@ -135,7 +122,6 @@ function captureFrame() {
     // Draw the current video frame onto the canvas.
     context.drawImage(video, 0, 0, canvas.width, canvas.height);
     
-    // Optional: Display feedback that a photo was taken
     flashFeedback();
 
     // Convert canvas content to a data URL and proceed with Blob conversion and upload
@@ -149,9 +135,7 @@ function captureFrame() {
     stopVideo();
 }
 
-
-
-    // Event listener for the capture icon/button
+// Event listener for the capture icon/button
 const captureIcon = document.querySelector('.capture-icon');
 captureIcon.addEventListener('click', () => {
     captureFrame();
@@ -174,8 +158,8 @@ function uploadImage(formData) {
             console.error('Error from server:', data.error);
         } else {
             console.log('Server response:', data);
-            displayDemographics(data.recommendations); // Assuming 'recommendations' also contains demographic data
-            displayRecommendations(data.recommendations); // Separate function to handle recommendations
+            displayDemographics(data.recommendations); 
+            displayRecommendations(data.recommendations); 
         }
     })
     .catch(error => console.error('Error uploading image:', error));
@@ -188,32 +172,25 @@ function displayDemographics(demographics) {
     const ageDisplay = document.getElementById('age');
     const emotionDisplay = document.getElementById('emotion');
 
-    // Assuming demographics is an object with gender, age, emotion
     genderDisplay.textContent += demographics.gender || 'Not detected';
     ageDisplay.textContent += demographics.age || 'Not detected';
     emotionDisplay.textContent += demographics.emotion || 'Not detected';
 }
 
-
-
 function displayRecommendations(recommendations) {
     const recommendationsDiv = document.querySelector('.recommendations');
-    recommendationsDiv.innerHTML = '';  // Clear existing content
+    recommendationsDiv.innerHTML = '';  
 
     recommendations.forEach((recommendation) => {
         const p = document.createElement('p');
-        p.textContent = recommendation; // Directly using recommendation which already includes numbering
+        p.textContent = recommendation;
         recommendationsDiv.appendChild(p);
     });
 }
-
-
-
-
     // Event listener for the videocam icon
     const videocamIcon = document.querySelector('.blue-circle');
     videocamIcon.addEventListener('mouseover', () => {
-        videocamIcon.style.cursor = 'pointer'; // Change cursor to pointer on hover
+        videocamIcon.style.cursor = 'pointer'; 
     });
     
     videocamIcon.addEventListener('click', () => {
@@ -224,6 +201,5 @@ function displayRecommendations(recommendations) {
         }
     });
 }
-
 // Call the openCvReady function when the OpenCV script is loaded
 openCvReady();

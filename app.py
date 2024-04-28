@@ -1,4 +1,4 @@
-# app.py: Updates to enhance readability and structure
+# app.py flask app
 from flask import Flask, request, jsonify, send_from_directory
 from werkzeug.utils import secure_filename
 import os

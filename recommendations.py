@@ -7,7 +7,6 @@ from recognition import get_demographics
 def get_recommendations(gender, emotion, age):
     user_content = f"{gender}, {emotion}, {age:.2f}"  # Format age to two decimal places
     client = OpenAI(
-        # defaults to os.environ.get("OPENAI_API_KEY")
         api_key="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",
     )
     #Chat Gpt Model
@@ -24,9 +23,6 @@ def get_recommendations(gender, emotion, age):
 def main():
     gender, emotion, age_array = get_demographics()
     age = float(age_array[0][0])  # Convert age from NumPy array to float
-    gender = "Male"
-    emotion = "Happy"
-    age = 20.39
     recommended_movies = get_recommendations(gender, emotion, age)
     return recommended_movies  # Return the list instead of printing
 

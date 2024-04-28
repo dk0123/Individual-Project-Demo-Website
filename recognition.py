@@ -3,12 +3,7 @@ import tensorflow as tf
 import cv2
 import os
 import numpy as np
-import random
-from tensorflow import keras
-from tensorflow.keras import layers
-
 from tensorflow.keras.optimizers.legacy import Adam
-
 from face_detection import detect_and_save_face
 
 
