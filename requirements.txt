@@ -1,5 +1,4 @@
  eval "$(pyenv init -)"         
- pip install -q -U google-generativeai
  !pip install pandas
   pip install opencv-python
   
