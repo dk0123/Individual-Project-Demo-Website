@@ -7,7 +7,7 @@ from recognition import get_demographics
 def get_recommendations(gender, emotion, age):
     user_content = f"{gender}, {emotion}, {age:.2f}"  # Format age to two decimal places
     client = OpenAI(
-        api_key="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",
+        api_key="",
     )
     #Chat Gpt Model
     completion = client.chat.completions.create(
