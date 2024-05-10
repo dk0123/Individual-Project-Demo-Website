@@ -168,15 +168,50 @@ h1 {
 }
 
 
-
-/* If you want to add a similar effect to the videocam button and it has a class 'blue-circle' */
 .blue-circle:hover {
-    cursor: pointer; /* Ensure it's here if not already added */
+    cursor: pointer; 
 }
 
-#recommendations {
-    margin-top: 20px;
-    padding: 10px;
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
+
+
+
+
+
+
+.details-container {
+    display: flex;
+    width: 100%; /* Full width of the parent container */
+    margin-top: 5px; /* Space from the tablet container */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Adds shadow to the entire container */
+    background: #FFF; /* Background color for the container */
+    border-radius: 8px; /* Optional: rounded corners for the container */
+    overflow: hidden; /* Keeps child elements' styles inside the container */
+    height: 275px;
+}
+
+.user-details, .recommendations {
+    flex: 1; /* Each child takes half the space of the parent */
+    padding: 10px; /* Padding inside the boxes */
+    box-sizing: border-box; /* Include padding in the width calculation */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertically center the content */
+    background-color: #f2f2f2; /* Light gray background for visibility */
+}
+
+.user-details {
+    border-right: 1px solid #ccc; /* Separator between the boxes */
+    font-weight: bold; /* Make the text bold */
+}
+
+.recommendations {
+    padding-left: 20px; /* Additional padding from the border */
+    font-weight: bold; /* Ensure recommendations are also bold if desired */
+}
+
+/* Additional styling for paragraphs inside user details and recommendations */
+.user-details p, .recommendations p {
+    margin: 8px 0; /* Adds vertical spacing between paragraphs */
+    font-size: 16px; /* Larger font size for better readability */
+    color: #333; /* Darker text for better readability against gray background */
 }

@@ -62,8 +62,8 @@ function initializeVideo() {
     function captureVideoFrame() {
         if (!video.paused && !video.ended) {
              // Set canvas width and height outside of drawImage
-             canvas.width = 920;
-             canvas.height = 630;
+             canvas.width = 720;
+             canvas.height = 430;
             context.drawImage(video, 0, 0, canvas.width, canvas.height);
             requestAnimationFrame(captureVideoFrame);
         }
@@ -170,21 +170,43 @@ function uploadImage(formData) {
     })
     .then(response => response.json())
     .then(data => {
-        console.log('Server response:', data);
-        displayRecommendations(data.recommendations);  // New function to handle recommendations
+        if(data.error) {
+            console.error('Error from server:', data.error);
+        } else {
+            console.log('Server response:', data);
+            displayDemographics(data.recommendations); // Assuming 'recommendations' also contains demographic data
+            displayRecommendations(data.recommendations); // Separate function to handle recommendations
+        }
     })
     .catch(error => console.error('Error uploading image:', error));
 }
 
+function displayDemographics(demographics) {
+    if (!demographics) return;
+
+    const genderDisplay = document.getElementById('gender');
+    const ageDisplay = document.getElementById('age');
+    const emotionDisplay = document.getElementById('emotion');
+
+    // Assuming demographics is an object with gender, age, emotion
+    genderDisplay.textContent += demographics.gender || 'Not detected';
+    ageDisplay.textContent += demographics.age || 'Not detected';
+    emotionDisplay.textContent += demographics.emotion || 'Not detected';
+}
+
+
+
 function displayRecommendations(recommendations) {
-    const recommendationsDiv = document.getElementById('recommendations');
-    recommendationsDiv.innerHTML = '';  // Clear previous recommendations
-    recommendations.forEach((recommendation, index) => {
+    const recommendationsDiv = document.querySelector('.recommendations');
+    recommendationsDiv.innerHTML = '';  // Clear existing content
+
+    recommendations.forEach((recommendation) => {
         const p = document.createElement('p');
-        p.textContent = `${index + 1}. ${recommendation}`;
+        p.textContent = recommendation; // Directly using recommendation which already includes numbering
         recommendationsDiv.appendChild(p);
     });
 }
+
 
 
 

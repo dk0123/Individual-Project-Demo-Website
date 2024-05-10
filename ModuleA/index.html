@@ -38,8 +38,10 @@
         <span class="close">&times;</span>
         <h2>Project Information Sheet</h2>
         <p><strong>Project Title:</strong> Detecting human features from face to support personalisation.</p>
-        <p>You are being invited to take part in a student project...</p>
-        <p>...Thank you very much for taking the time to read this information sheet.</p>
+        <p>Your demographics such as age, gender and emotion will be extracted using the image of your face.</p>
+        <p>Based on the demographics extracted, you will be provided with some movie recommendations.</p>
+        <p>It is important to note that this project is just a demonstration of how this technology could work.</p>
+        <p>The features detected and recommendations provided might not be accurate, and we encourage you to not take any offense from the outputs</p>
     </div>
 </div>
 
@@ -63,14 +65,28 @@
 
              <!-- -------------Tablet Container------------- -->
             <div class="tablet-container">
-            <img id="tablet-image" src="Resources/tablet.png" width="1024" height="720" alt="tablet image">
+            <img id="tablet-image" src="Resources/tablet.png" width="824" height="520" alt="tablet image">
 
             <canvas id="main-canvas" width="960" height="720">
-                <img id="img-main" src="../Resources/car.png" alt="">
             </canvas>
             </div>
+
+            <div class="details-container">
+                <!-- Detected Attributes -->
+                <div class="user-details">
+                    <p id="age">Your detected age is: </p>
+                    <p id="gender">Your detected gender is: </p>
+                    <p id="emotion">Your detected emotion is: </p>
+                </div>
+                
+                <!-- Recommendations -->
+                <div class="recommendations">
+                    <!-- Recommendations will be dynamically filled here -->
+                </div>
+            </div>
+            
         </div>
-        <div id="recommendations"></div>
+        
 
     </div> 
     <!-- Link the javascript file  -->

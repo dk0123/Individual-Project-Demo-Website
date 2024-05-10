@@ -18,12 +18,15 @@ def get_recommendations(gender, emotion, age):
         {"role": "user", "content": user_content}
     ]
     )
-    recommendations = completion.choices[0].message.content
-    return recommendations.strip().split('\n')
+    recommendations = completion.choices[0].message.content.strip().split('\n')
+    return recommendations
 
 def main():
     gender, emotion, age_array = get_demographics()
     age = float(age_array[0][0])  # Convert age from NumPy array to float
+    gender = "Male"
+    emotion = "Happy"
+    age = 20.39
     recommended_movies = get_recommendations(gender, emotion, age)
     return recommended_movies  # Return the list instead of printing
 
